@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <title>Document</title>
+    <style>
+        li.active {
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" placeholder="請輸入代辦事項" @keyup.enter="addTodo(newTodo)" v-model="newTodo">
+        <h2>待辦事項</h2>
+        <ul>
+            <li v-for="todo in todos" v-bind:class="{active:todo.completed}">
+                <input type="checkbox" v-model="todo.completed">
+                {{todo.content}}
+                - <a href="#" @click.prevent="removeTodo">刪除</a>
+            </li>
+        </ul>
+        <a href="#" @click.prevent="clearAll">刪除全部</a>
+        <pre>
+            {{this.todos}}
+        </pre>
+    </div>
+
+
+    <script>
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                todos: [],
+                newTodo: ''
+            },
+            methods: {
+                addTodo: function (todo) {
+                    var value = this.newTodo.trim();
+                    if (!value) {
+                        return;   //若內容為空白就終止 function
+                    }
+                    this.todos.push({ content: todo, completed: false }),//加入todo的資料到todos 並且清空文字框
+                        this.newTodo = '';
+                },
+                removeTodo: function (todo) {
+                    this.todos.splice(this.todos.indexOf(), 1)//找到你是第幾筆，然後刪除
+                },
+                clearAll: function(todo){
+                    this.todos=[];//重製todos的內容
+                }
+            },
+        })
+
+    </script>
+</body>
+
+</html>

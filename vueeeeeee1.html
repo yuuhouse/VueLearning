@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue 範例</title>
+    <!--<script src="https://unpkg.com/vue/dist/vue.min.js"></script> 錯誤連結-->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<!-- @@-->
+
+<body>
+    <div id="app">
+        <!-- v-model 作為資料與視圖的雙向綁定 -->
+        <input type="text" v-model="name" placeholder="請輸入你的名字">
+        <h1> 你女朋友真好用{{ name }}</h1>
+    </div>
+
+    <div id="testnameinput01">
+        <input type="text" v-model="name001" placeholder="請輸入你的名字">
+        <h1>雛田體內可以發現什麼 {{ name001 }}</h1>
+    </div>
+</body>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            name: ''
+        }
+    })
+</script>
+
+<script>
+
+    var testnameinput = new Vue({
+        el: '#testnameinput01',
+        data: {
+            name001: ''
+        }
+    })
+    var app = new Vue({
+        el: '#app',
+        data: {
+            name: 'andy'
+        }
+    })
+    console.log(app.name); // andy
+    // 修改資料
+    app.name = 'alex';
+    console.log(app.name); // alex
+    console.log("you motherfucker"); //
+
+</script>
+
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+
+
+
+<body>
+
+    <div id="titleTest">
+        <p v-bind:title="titleText">123123</p>
+    </div>
+    <strong>1223123</strong>
+
+
+    <div id="app">
+        {{ message }}
+    </div>
+
+    <div id="app-2">
+        <span v-bind:title="message">
+            Hover your mouse over me for a few seconds to see my dynamically bound title!
+        </span>
+    </div>
+
+    <div id="app-3">
+        <p v-if="seen">Now you see me</p>
+        <p v-if="seen">Now you don't</p>
+    </div>
+
+    <div id="appInput">
+        <input type="text" v-model="text">
+        <br>{{text}}
+
+    </div>
+
+    <div id="appVm">
+        <div :style="[red,blackbg]">{{ text }}</div>
+    </div>
+
+    <div id="appVm2">
+        <div class="active"
+        :class="[ isAcrive? 'bgblue' : 'bgred' ]" 
+        @click="isAcrive = !isAcrive">{{ text }}
+        </div>
+      </div>
+
+    <script>
+
+        var tT = new Vue({
+            el: '#titleTest',
+            data: {
+                titleText: 'I Love You'
+            }
+        })
+
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello Vue!'
+            }
+        })
+
+        var app2 = new Vue({
+            el: '#app-2',
+            data: {
+                message: 'You loaded this page on ' + new Date()
+            }
+        })
+        var app3 = new Vue({
+            el: '#app-3',
+            data: {
+                seen: true
+            }
+        })
+
+        var inPut = new Vue({
+            el: appInput,
+            data: {
+                text: ''
+            }
+        })
+
+        console.log(a);
+        b();
+        var a = 'hello JavaScript!!';
+
+        function b() {
+            console.log('console show b');
+        }
+
+        const vm = new Vue({
+            el: '#appVm',
+            data:
+            {
+                text: 'Hello Vueeeee!',
+                style123:
+                {
+                    color: "#0095C0",
+                    background: "#000",
+                },
+                red: {
+                    color: "#0095C0",
+                },
+                blackbg: {
+                    background: "#000",
+                },
+            }
+        })
+
+        const vm2=new Vue({
+            el:'#appVm2',
+            data:{
+                text:'Hello World!!222',
+                isAcrive:true,
+            }
+        })
+        
+
+    </script>
+
+</body>
+
+</html>

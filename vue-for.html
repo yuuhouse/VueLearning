@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+        <ul>
+            <li v-for="(item, index) in products">{{ index }} - {{ item.name }} - {{ item.price}}
+                <input type="text">
+            </li>
+        </ul>
+        <button type="button" @click="reverseArray">反轉</button>
+    </div>
+
+    <script>
+
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                products: [
+                    {
+                        name: '上衣',
+                        price: 500
+                    },
+                    {
+                        name: '褲子',
+                        price: 1000
+                    },
+                    {
+                        name: '鞋子',
+                        price: 2000
+                    },
+                    {
+                        name: '帽子',
+                        price: 2000
+                    },
+                ],
+
+            },
+            methods: {
+                reverseArray() {
+                    this.products.reverse();
+                }
+            }
+        })
+
+
+
+    </script>
+</body>
+
+</html>
