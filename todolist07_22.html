@@ -36,6 +36,14 @@
             /* padding: auto; */
             /* justify-content: center; */
         }
+
+        a:link {
+            text-decoration: none;
+
+        }
+        a:hover{/*hover 才有底線*/
+            text-decoration:underline;
+        }
     </style>
 
 </head>
@@ -46,7 +54,7 @@
 
             <h1>TODOS</h1>
             <input type="text" placeholder="請輸入代辦事項" @keyup.enter="addTodo(newTodo)" v-model="newTodo">
-            <p class="hint">Press ENTER.</p>
+            <p class="hint">Press ENTER.</p>//小字提醒
             <ul>
                 <li v-for="todo in todos" v-bind:class="{active:todo.completed}">
                     <input type="checkbox" v-model="todo.completed">
